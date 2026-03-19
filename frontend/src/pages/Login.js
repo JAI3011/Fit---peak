@@ -62,7 +62,7 @@ function Login() {
           <ul className="auth-panel__features">
             <li>💪 Log workouts &amp; exercises</li>
             <li>🥗 Monitor your nutrition</li>
-            <li>📈 Visualise your progress</li>
+            <li>📈 Visualize your progress</li>
             <li>🏆 Crush your fitness goals</li>
           </ul>
         </div>

@@ -74,7 +74,7 @@ function Register() {
             Start your fitness journey today and reach your peak.
           </p>
           <ul className="auth-panel__features">
-            <li>🎯 Set personalised goals</li>
+            <li>🎯 Set personalized goals</li>
             <li>📊 Track body measurements</li>
             <li>🔥 Monitor calorie intake</li>
             <li>💪 Build consistent habits</li>
