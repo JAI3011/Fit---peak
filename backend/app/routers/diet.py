@@ -28,13 +28,13 @@ async def list_diet_entries(
 
     if date:
         try:
-            day_start = datetime.strptime(date, "%Y-%m-%d")
+            day_start = datetime.strptime(date, "%Y-%m-%d").replace(tzinfo=timezone.utc)
         except ValueError:
             raise HTTPException(
                 status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
                 detail="Invalid date format. Use YYYY-MM-DD",
             )
-        day_end = datetime(day_start.year, day_start.month, day_start.day, 23, 59, 59)
+        day_end = day_start.replace(hour=23, minute=59, second=59)
         query["date"] = {"$gte": day_start, "$lte": day_end}
 
     cursor = db.diet.find(query).sort("date", -1).skip(skip).limit(limit)

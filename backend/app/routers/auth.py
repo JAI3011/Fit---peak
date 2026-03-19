@@ -1,11 +1,12 @@
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 
+from bson import ObjectId
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 
 from app.config import settings
 from app.database import get_database
-from app.models.user import UserCreate, UserInDB, UserResponse
+from app.models.user import UserCreate, UserResponse
 from app.utils.auth import (
     create_access_token,
     get_current_user_id,
@@ -36,8 +37,6 @@ async def register(user_data: UserCreate):
     hashed_password = get_password_hash(user_data.password)
     user_doc = user_data.model_dump(exclude={"password"})
     user_doc["hashed_password"] = hashed_password
-
-    from datetime import datetime, timezone
     user_doc["created_at"] = datetime.now(timezone.utc)
 
     result = await db.users.insert_one(user_doc)
@@ -66,8 +65,6 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
 @router.get("/me", response_model=UserResponse)
 async def get_me(current_user_id: str = Depends(get_current_user_id)):
     db = get_database()
-    from bson import ObjectId
-
     user = await db.users.find_one({"_id": ObjectId(current_user_id)})
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")

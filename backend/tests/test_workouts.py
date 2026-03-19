@@ -13,7 +13,6 @@ async def test_create_workout(async_client, auth_headers):
     assert data["name"] == "Morning Run"
     assert data["workout_type"] == "cardio"
     assert "_id" in data
-    return data
 
 
 @pytest.mark.asyncio
