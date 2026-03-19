@@ -1,0 +1,160 @@
+/* ── Date filter ────────────────────────────────────── */
+.diet-date-filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.diet-date-input {
+  max-width: 200px;
+}
+
+/* ── Nutrition summary bar ──────────────────────────── */
+.nutrition-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+  border-radius: var(--radius-lg);
+  padding: 18px 24px;
+  margin-bottom: 24px;
+  color: #fff;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.nutrition-bar__divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.25);
+  margin: 0 8px;
+}
+
+.nutrition-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.nutrition-bar__item--calories {
+  min-width: 80px;
+}
+
+.nutrition-bar__value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.nutrition-bar__label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+/* ── Diet sections ──────────────────────────────────── */
+.diet-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.diet-section__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.diet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Diet item ──────────────────────────────────────── */
+.diet-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s;
+}
+.diet-item:hover { box-shadow: var(--shadow-md); }
+
+.diet-item__main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  overflow: hidden;
+}
+
+.diet-item__icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.diet-item__info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.diet-item__name {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.diet-item__date {
+  font-size: 0.77rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.diet-item__macros {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.diet-item__cal {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.form-row--thirds {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 600px) {
+  .form-row--thirds {
+    grid-template-columns: 1fr;
+  }
+  .diet-item__macros {
+    display: none;
+  }
+  .nutrition-bar__divider {
+    display: none;
+  }
+}
